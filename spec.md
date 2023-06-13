@@ -4,7 +4,7 @@
 
 ### 1.1 Zweck
 
-Der Zweck dieses Dokuments besteht darin, die Anforderungen für die Integration der PowerOn™ ERP-Software mit der EDI-Schnittstelle von Sonepar zu definieren. Diese Integration ermöglicht es den Nutzern von PowerOn™, e-Procurement-Prozesse zu nutzen.
+Der Zweck dieses Dokuments besteht darin, die Anforderungen für die Integration der PowerOn™ ERP-Software mit der EDI-Schnittstelle von Sonepar zu definieren. Diese Integration ermöglicht es den Nutzern von PowerOn™, e-Procurement in ihre Betriebsprozesse zu einsetzen.
 
 ### 1.2 Referenzen
 
@@ -17,7 +17,7 @@ Der Zweck dieses Dokuments besteht darin, die Anforderungen für die Integration
 
 Die PowerOn™ Software wird an die Sonepar EDI-Schnittstelle angeschlossen. Produktinformationen werden über die OCI Open Catalog Interface von Sonepar bezogen und über die PDP-Schnittstelle in PowerOn™ eingebunden.
 
-### 2.2 Produktfunktionen
+### 2.2 Schnittstellefunktionen
 
 - **RFQs über EDI senden:** PowerOn™ sendet elektronische Anfragen an Sonepar über deren EDI.
 - **Angebote erhalten:** PowerOn™ empfängt elektronische Angebote von Sonepar.
@@ -34,7 +34,24 @@ Die PowerOn™ Software wird an die Sonepar EDI-Schnittstelle angeschlossen. Pro
 2. **Datenanforderungen:** Das System muss in der Lage sein, Produktinformationen aus dem PDP von PowerOn™ abzurufen und zu nutzen.
 3. **Prozessanforderungen:** Das System muss in der Lage sein, den gesamten E-Procurement-Prozess, von der Anfrage über die Bestätigung bis zur Rechnungsstellung, zu unterstützen.
 
-### 3.2 Nicht-Funktionale Anforderungen
+### 3.2 Authentifizierungsanforderungen
+
+1. **Authentifizierung zwischen PowerOn™ und Sonepar:** 
+
+    Das System muss einen sicheren Authentifizierungsprozess implementieren, um die Kommunikation zwischen PowerOn™ und Sonepar zu ermöglichen. Dies wird durch folgende Schritte erreicht:
+
+    - **Anforderung der Authentifizierung:** PowerOn™ sendet eine Authentifizierungsanforderung an Sonepar über eine sichere HTTPS-Verbindung. Diese Anforderung enthält die notwendigen Identifizierungsinformationen (z.B. API-Schlüssel oder andere Anmeldeinformationen).
+
+    - **Bestätigung der Authentifizierung:** Sonepar prüft die Anmeldeinformationen und sendet eine Bestätigung zurück an PowerOn™, falls die Authentifizierung erfolgreich ist. Im Falle eines Fehlers sendet Sonepar eine Fehlermeldung zurück.
+
+    - **Erhalt eines Authentifizierungstokens:** Nach erfolgreicher Authentifizierung stellt Sonepar ein Authentifizierungstoken aus, das für nachfolgende API-Aufrufe verwendet wird. 
+
+    - **Verwendung des Tokens:** Bei nachfolgenden API-Aufrufen muss PowerOn™ dieses Token im HTTP Header (typischerweise als Bearer Token) senden, um seine Identität zu bestätigen und Zugriff auf die EDI-Schnittstelle zu erhalten.
+
+Diese Authentifizierungsmethode stellt sicher, dass nur autorisierte Anfragen von PowerOn™ an Sonepar gesendet werden und umgekehrt, und dass alle Daten sicher übertragen werden. 
+
+
+### 3.3 Nicht-Funktionale Anforderungen
 
 1. **Leistung:** Das System muss in der Lage sein, eine große Menge von Produktinformationen zu verarbeiten und zeitnah zu reagieren.
 2. **Sicherheit:** Alle übermittelten Daten müssen sicher und geschützt sein.
