@@ -26,6 +26,8 @@ Die PowerOn™ Software wird an die Sonepar EDI-Schnittstelle angeschlossen. Pro
 - **Versand und Lieferinformationen empfangen:** Sonepar bestätigt den Warenausgang an ihre Kunden durch elektronische Lieferscheine.
 - **Rechnungen empfangen:** Nach der Lieferung der Waren werden die Rechnungen elektronisch an die Kunden von Sonepar (Unternehmen, die PowerOn™ nutzen) ausgestellt.
 
+![image](https://github.com/euroblaze/sonepar/assets/7826363/37ba3324-fe69-4b54-ab10-bc5f92893032)
+
 ## 3. Spezifische Anforderungen
 
 ### 3.1 Funktionale Anforderungen
